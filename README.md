@@ -9,3 +9,5 @@ Assume you are in a casino with an unlimited budget, hoping to leave with the mo
 1. Place a bet as an integer value.
 2. Confirm if you want to continue.
 3. Your net earnings (total chips) will be reviewed after you exit.
+
+To run is to locate the main directory and use `py main.py` in terminal.

@@ -31,5 +31,5 @@ while True:
     if exit_command == True:
         break
 
-print("#" * 20)
+print("#" * 20, "\n")
 padding = input("Press any key to exit")
