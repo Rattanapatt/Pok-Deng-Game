@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(suit, rank) {
     this.suit = suit;
     this.rank = rank;
@@ -6,7 +6,9 @@ class Card {
   }
 
   getValue() {
-    return ["10", "Jack", "Queen", "King"].includes(this.rank) ? 0 : this.rank;
+    return ["10", "Jack", "Queen", "King"].includes(this.rank)
+      ? 0
+      : parseInt(this.rank) || 1;
   }
 
   toString() {
@@ -14,7 +16,7 @@ class Card {
   }
 }
 
-class Deck {
+export class Deck {
   constructor() {
     this.suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
     this.ranks = [
