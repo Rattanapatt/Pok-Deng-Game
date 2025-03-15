@@ -1,23 +1,29 @@
+import { parse } from "path";
+import readline from "readline";
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
 export function continuation(netChip) {
-  let exitCommand = false;
+  return new Promise((resolve) => {
+    const askQuestion = () => {
+      rl.question("Do you want to continue??? (Y/N): ", (playerCommand) => {
+        if (playerCommand == "n" || playerCommand == "no") {
+          rl.close();
+          console.log(`You got total ${netChip} chips`);
+          resolve(true);
+        } else if (playerCommand == "y" || playerCommand == "yes") {
+          rl.close();
+          resolve(false);
+        } else {
+          console.log("Please enter the correct command...");
+          askQuestion();
+        }
+      });
+    };
 
-  while (true) {
-    let playerCommand = prompt("Do you want to continue??? (Y/N):");
-
-    if (!playerCommand) continue;
-
-    playerCommand = playerCommand.toLowerCase();
-
-    if (playerCommand === "n" || playerCommand === "no") {
-      console.log(`You got total ${netChip} chips`);
-      exitCommand = true;
-      break;
-    } else if (playerCommand === "y" || playerCommand === "yes") {
-      break;
-    } else {
-      console.log("Please enter the correct command...");
-    }
-  }
-
-  return exitCommand;
+    askQuestion();
+  });
 }
